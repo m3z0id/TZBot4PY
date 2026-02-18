@@ -1,0 +1,17 @@
+[project]
+name = "tzbot4py"
+version = "0.1.0"
+description = "Python bindings for TZBot"
+readme = "README.md"
+authors = [
+    { name = "M3z0id" }
+]
+requires-python = ">=3.11"
+dependencies = []
+
+[build-system]
+requires = ["scikit-build-core>=0.11", "pybind11>=3.0", "pybind11-stubgen"]
+build-backend = "scikit_build_core.build"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
