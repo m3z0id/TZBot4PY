@@ -1,6 +1,6 @@
 [project]
 name = "tzbot4py"
-version = "0.1.0"
+version = "1.0.0"
 description = "Python bindings for TZBot"
 readme = "README.md"
 authors = [
