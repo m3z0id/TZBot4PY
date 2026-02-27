@@ -19,8 +19,6 @@ class IsLinkedData(ITZData):
         ...
     def to_json(self) -> dict:
         ...
-class PacketParseException(Exception):
-    pass
 class PingData(ITZData):
     def __init__(self) -> None:
         ...
@@ -31,6 +29,9 @@ class PingData(ITZData):
     def to_json(self) -> dict:
         ...
 class QueueAbortException(Exception):
+    pass
+
+class PacketParseException(Exception):
     pass
 class SocketReadException(Exception):
     pass
@@ -91,14 +92,9 @@ class TZRequest:
         ...
     def get_request_type(self) -> int:
         ...
-    def set_api_key(self, api_key: str) -> None:
-        ...
     def to_json(self) -> dict:
         ...
 class TZResponse:
-    @staticmethod
-    def from_json(json: dict) -> typing.Self:
-        ...
     def to_json(self) -> dict:
         ...
     def get_code(self) -> int:

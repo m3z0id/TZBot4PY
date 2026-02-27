@@ -13,13 +13,14 @@ FetchContent_Declare(
         pybind11
         GIT_REPOSITORY https://github.com/pybind/pybind11.git
         GIT_TAG v3.0.2
+        EXCLUDE_FROM_ALL
 )
 FetchContent_Declare(
         pybind11_json
         GIT_REPOSITORY https://github.com/pybind/pybind11_json.git
         GIT_TAG 0.2.15
+        EXCLUDE_FROM_ALL
 )
-
 FetchContent_Declare(
         tzbot4cpp
         GIT_REPOSITORY https://github.com/m3z0id/TZBot4CPP.git
@@ -31,8 +32,7 @@ FetchContent_MakeAvailable(tzbot4cpp pybind11 pybind11_json)
 find_package(pybind11 CONFIG REQUIRED)
 
 python_add_library(_core MODULE src/main.cpp src/exceptions.cpp src/data.cpp src/request.cpp WITH_SOABI)
-target_include_directories(_core PRIVATE ${pybind11_json_SOURCE_DIR}/include)
-target_link_libraries(_core PRIVATE pybind11::headers TZBot4CPP::TZBot4CPP)
+target_link_libraries(_core PRIVATE pybind11::headers pybind11_json TZBot4CPP::TZBot4CPP)
 target_compile_definitions(_core PRIVATE VERSION_INFO=${PROJECT_VERSION})
 
 set_target_properties(_core PROPERTIES BUILD_RPATH "$ORIGIN" INSTALL_RPATH "$ORIGIN")
