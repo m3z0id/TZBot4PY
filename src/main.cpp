@@ -15,12 +15,14 @@ PYBIND11_MODULE(_core, m) {
     py::class_<TZBot>(m, "TZBot")
         .def(py::init<const std::string&, uint16_t, const std::string&, const std::string&>(), py::arg("ip_address"), py::arg("port"), py::arg("api_key"), py::arg("encryption_key"))
         .def("set_flags", [](TZBot& bot, const py::args& args) {
-            std::set<TZFlags> flagsVec;
+            uint8_t flags = 0;
             for (py::handle item : args) {
-                flagsVec.emplace(item.cast<TZFlags>());
+                if (!py::isinstance<TZFlags>(item) && !py::isinstance<py::int_>(item)) throw py::type_error("set_flags expects TZFlags or integers");
+
+                flags |= static_cast<uint8_t>(item.cast<unsigned int>());
             }
 
-            bot.setFlags(flagsVec);
+            bot.setFlags(flags);
         })
         .def("make_request", [](const TZBot& bot, TZRequest& req) {
             py::object loop = py::module_::import("asyncio").attr("get_running_loop")();

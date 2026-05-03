@@ -29,7 +29,7 @@ FetchContent_Declare(
 set(TZBOT4CPP_BUILD_SHARED OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(tzbot4cpp pybind11 pybind11_json)
 
-find_package(pybind11 CONFIG REQUIRED)
+# find_package(pybind11 CONFIG REQUIRED)
 
 python_add_library(_core MODULE src/main.cpp src/exceptions.cpp src/data.cpp src/request.cpp WITH_SOABI)
 target_link_libraries(_core PRIVATE pybind11::headers pybind11_json TZBot4CPP::TZBot4CPP)
