@@ -1,5 +1,4 @@
 #include <pybind11/pybind11.h>
-#include <pybind11_json/pybind11_json.hpp>
 #include <pybind11/stl.h>
 #include <TZBot/TZRequest.h>
 #include <TZBot/TZResponse.h>
@@ -18,8 +17,8 @@ void initRequest(py::module_& m) {
         .def("get_code", &TZResponse::getCode)
         .def("get_response_str", &TZResponse::getResponseAsString)
         .def("get_response_int", [](const TZResponse& resp) -> std::optional<uint64_t> {
-            if (auto longVal = resp.getResponseAsLong()) return *longVal;
-            if (auto intVal = resp.getResponseAsInt()) return *intVal;
+            if (auto longVal = resp.getResponseAsULong()) return longVal.value();
+            if (auto intVal = resp.getResponseAsInt()) return intVal.value();
             return std::nullopt;
         });
 }

@@ -13,7 +13,7 @@ PYBIND11_MODULE(_core, m) {
     initExceptions(m);
 
     py::class_<TZBot>(m, "TZBot")
-        .def(py::init<const std::string&, uint16_t, const std::string&, const std::string&>(), py::arg("ip_address"), py::arg("port"), py::arg("api_key"), py::arg("encryption_key"))
+        .def(py::init<const std::string&, uint16_t, const std::string&, const std::array<uint8_t, 32>*>(), py::arg("ip_address"), py::arg("port"), py::arg("api_key"), py::arg("encryption_key"))
         .def("set_flags", [](TZBot& bot, const py::args& args) {
             uint8_t flags = 0;
             for (py::handle item : args) {
@@ -38,7 +38,6 @@ PYBIND11_MODULE(_core, m) {
     py::enum_<TZFlags>(m, "TZFlags", py::arithmetic())
         .value("AES", TZFlags::AES)
         .value("CHACHA20", TZFlags::CHACHA20)
-        .value("GZIP", TZFlags::GZIP)
         .value("MSGPACK", TZFlags::MSGPACK)
         .export_values();
 }

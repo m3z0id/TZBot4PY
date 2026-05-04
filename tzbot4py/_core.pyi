@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__: list[str] = ['AES', 'CHACHA20', 'GZIP', 'ITZData', 'IsLinkedData', 'MSGPACK', 'PacketParseException', 'PingData', 'QueueAbortException', 'SocketReadException', 'TZBot', 'TZFlags', 'TZRequest', 'TZResponse', 'TimezoneFromIPData', 'TimezoneFromUUIDData', 'TimezoneFromUserIDData', 'UUIDFromUserIDData', 'UpdateTimezoneData', 'UserIDUUIDLinkData', 'UserIdFromUUIDData']
+__all__: list[str] = ['AES', 'CHACHA20', 'ITZData', 'IsLinkedData', 'MSGPACK', 'PacketParseException', 'PingData', 'QueueAbortException', 'SocketReadException', 'TZBot', 'TZFlags', 'TZRequest', 'TZResponse', 'TimezoneFromIPData', 'TimezoneFromUUIDData', 'TimezoneFromUserIDData', 'UUIDFromUserIDData', 'UpdateTimezoneData', 'UserIDUUIDLinkData', 'UserIdFromUUIDData']
 class ITZData:
     def __init__(self) -> None:
         ...
@@ -43,15 +43,12 @@ class TZFlags:
     
       CHACHA20
     
-      GZIP
-    
       MSGPACK
     """
     AES: typing.ClassVar[TZFlags]  # value = <TZFlags.AES: 1>
     CHACHA20: typing.ClassVar[TZFlags]  # value = <TZFlags.CHACHA20: 2>
-    GZIP: typing.ClassVar[TZFlags]  # value = <TZFlags.GZIP: 4>
     MSGPACK: typing.ClassVar[TZFlags]  # value = <TZFlags.MSGPACK: 8>
-    __members__: typing.ClassVar[dict[str, TZFlags]]  # value = {'AES': <TZFlags.AES: 1>, 'CHACHA20': <TZFlags.CHACHA20: 2>, 'GZIP': <TZFlags.GZIP: 4>, 'MSGPACK': <TZFlags.MSGPACK: 8>}
+    __members__: typing.ClassVar[dict[str, TZFlags]]  # value = {'AES': <TZFlags.AES: 1>, 'CHACHA20': <TZFlags.CHACHA20: 2>, 'MSGPACK': <TZFlags.MSGPACK: 8>}
     def __eq__(self, other: typing.Any) -> bool:
         ...
     def __ge__(self, other: typing.Any) -> bool:
@@ -178,5 +175,4 @@ class UserIdFromUUIDData(ITZData):
         ...
 AES: TZFlags  # value = <TZFlags.AES: 1>
 CHACHA20: TZFlags  # value = <TZFlags.CHACHA20: 2>
-GZIP: TZFlags  # value = <TZFlags.GZIP: 4>
 MSGPACK: TZFlags  # value = <TZFlags.MSGPACK: 8>
