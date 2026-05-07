@@ -24,7 +24,7 @@ FetchContent_Declare(
 FetchContent_Declare(
         tzbot4cpp
         GIT_REPOSITORY https://github.com/m3z0id/TZBot4CPP.git
-        GIT_TAG dev
+        GIT_TAG master
 )
 set(TZBOT4CPP_BUILD_SHARED OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(tzbot4cpp pybind11 pybind11_json)
